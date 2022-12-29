@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>사용자가 버튼을 클릭하면 input태그의 공백여부, checkbox의 체크 여부 확인하기</h3>
+    아이디 : <input type="input" id="id">
+    기억하기 : <input type="checkbox" class="remember">
+    <button id="btn">확인</button>
+
+    <script>
+        var id = document.querySelector("#id");
+        var remember = document.getElementsByClassName("remember")[0];
+        // var remember = document.querySelector(".remember");
+        console.log(remember);
+        var btn = document.querySelector("#btn");
+        btn.addEventListener("click", function() {
+            if(id.value == "") {
+                alert('값을 입력하세요');
+            } else {
+                console.log(id.value);
+            }
+            
+            if(remember.checked == 1) {
+             console.log('체크')
+            } else {
+             console.log('체크x')
+            }
+            // if(remember.checked == true) {
+            //     console.log('체크');
+            // } else {
+            //     console.log('체크x');
+            // }
+        });
+    </script>
+    <hr>
+
+    <h3>인라인 이벤트 - 사용자가 checkbox를 클릭할 때 마다 경고창에 value값을 띄우기</h3>
+    <input type="checkbox" value="1" onclick="alert(value + '번 조항')">조항1
+    <input type="checkbox" value="2" onclick="if(checked==true)alert(value)">조항2
+    <input type="checkbox" value="3" onclick="check(this)">조항3
+
+    <script>
+        function check(a) {
+            if(a.checked == true) alert(a.value + '번');
+        }
+    </script>
+</body>
+</html>
