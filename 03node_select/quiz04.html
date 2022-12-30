@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>JS 카운트 만들기</h3>
+
+    <input type="number" value="0">
+    <button onclick="calc(this)">증가</button>
+    <button onclick="calc(this)">감소</button>
+    <button onclick="calc(this)">초기화</button>
+
+    <script>
+        //this, innerHTML, value 속성 사용
+        var number = document.querySelector("input");
+        console.log(number);
+
+        function calc(btn) {
+            if(btn.innerHTML == "증가") number.value++;
+            if(btn.innerHTML == "감소") {
+                if(number.value <= 0) {
+                    alert('X');
+                } else {
+                    number.value--;
+                }
+            }
+            if(btn.innerHTML == "초기화") number.value = 0;
+        }
+
+        // var btn = document.querySelectorAll("button");
+        // btn[0].onclick = function() { //증가
+        //     btn[0].innerHTML = "+";
+        //     number.value++;
+        // }
+
+        // btn[1].onclick = function() { //감소
+        //     btn[1].innerHTML = "-";
+        //     if(number.value == 0) {
+        //         alert('X');
+        //     } else {
+        //         number.value--;
+        //     }
+        // }
+    </script>
+</body>
+</html>
