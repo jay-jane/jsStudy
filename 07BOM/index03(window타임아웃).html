@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button class="stop">ㅁㅁ</button>
+    <script>
+        //window. 생략 가능
+        // x초 뒤에 한 번 동작
+        var id = setTimeout(function() {
+            alert('땡');
+        }, 3000); //setTimeout(실행시킬함수, 지연시간(밀리초));
+
+        var stop = document.querySelector(".stop");
+        stop.onclick = function() {
+            clearTimeout(id);
+            stop.innerHTML = "중지됨";
+        }
+    </script>
+</body>
+</html>

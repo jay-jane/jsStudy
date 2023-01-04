@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" name="actionForm">
+        <h3>가입</h3>
+        이름 : <input type="text" name="name"><br>
+        번호 : <input type="text" name="phone" onblur="phoneF(event)"><br>
+        분야 : 
+        <input type="checkbox" name="check">CSS
+        <input type="checkbox" name="check">JS
+        <input type="checkbox" name="check">HTML
+
+        <input type="submit" value="등록">
+    </form>
+
+    <script>
+        /*
+        1. form태그는 document의 하위라서 document.form이름으로 접근 가능
+        2. input은 form의 하위라서 document.form이름.태그name으로 접근 가능
+        */
+    //    console.log(document.actionForm);
+    //    console.log(document.actionForm.name);
+    //    console.log(document.actionForm.phone);
+    //    console.log(document.actionForm.check);
+        
+        var submit = document.actionForm.querySelector("input[type='submit']");
+        submit.onclick = function() {
+            event.preventDefault(); //submit 고유 이벤트 제거
+            if(document.actionForm.name.value.length <= 0) { //이름값이 없을 경우
+                alert('이름을 입력해주세요');
+                document.actionForm.name.focus(); //포커싱
+                return;
+            } else if(document.actionForm.phone.value.length != 11) {
+                alert('하이픈(-)을 제외한 11자리 숫자를 입력해주세요');
+                document.actionForm.phone.focus(); //포커싱
+                return;
+            } else {
+                // var check = document.querySelectorAll("input[name='check']");
+                var check = document.actionForm.check;
+                var cnt = 0;
+                for(var i = 0; i < check.length; i++) {
+                    if(check[i].checked) {
+                        cnt++;
+                    }
+                }
+                if(cnt == 0) {
+                    alert('하나 이상 체크하기');
+                    return;
+                }
+            }
+            document.actionForm.submit();
+        }
+
+        function phoneF(e) {
+            e.target.value = e.target.value.replaceAll("-", "");
+        }
+    </script>
+</body>
+</html>

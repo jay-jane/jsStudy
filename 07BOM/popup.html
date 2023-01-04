@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업</title>
+</head>
+<body>
+    ㅎㅇ<br>
+
+    <input type="checkbox" class="closePopup">오늘 이 창 열지 않기
+
+    <script>
+        var closePopup = document.querySelector(".closePopup");
+        closePopup.onclick = function() {
+            window.close(); //쿠키로 기간 설정
+            //opener - 주 창과 보조 창 간의 데이터 전달 가능
+        }
+    </script>
+</body>
+</html>

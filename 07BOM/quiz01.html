@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        .bgimg{
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from{
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <!-- <style>
+        .bgimg {display: none;}
+        .bgimg.active {display: inline; animation: fadeIn 0.5s ease-in-out;}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+    </style> -->
+</head>
+<body>
+    <h3>애니메이션이 주기적으로 동작하려면 태그가 변경되어야 함</h3>
+    
+    <div class="slide">
+        <img src="img/slide1.jpg" class="bgimg active">
+        <!-- <img src="img/slide2.jpg" class="bgimg">
+        <img src="img/slide3.jpg" class="bgimg">
+        <img src="img/slide4.jpg" class="bgimg"> -->
+    </div>
+
+    <script>
+        var slide = document.querySelector(".slide");
+        window.setInterval(f, 1000);
+
+        var cnt = 2;
+        function f() { //첫 함수 실행이 1초 뒤에 있음, 2번 이미지부터 띄우기
+            slide.children[0].remove();
+            var img = document.createElement("img");
+            img.src = "img/slide" + cnt + ".jpg";
+            img.classList.add("bgimg");
+            slide.appendChild(img);
+            cnt++;
+            if(cnt > 4) cnt = 1;
+        }
+    </script>
+
+    <!-- <script>
+        var num = 1;
+        var arr = ['img/slide1.jpg', 'img/slide2.jpg', 'img/slide3.jpg', 'img/slide4.jpg', ];
+        
+        setInterval(function() {
+            var img = document.createElement("img");
+            img.src = arr[num];
+            img.classList.add("bgimg");
+            var slide = document.querySelector(".slide");
+            slide.firstElementChild.remove();
+            slide.appendChild(img);
+            num++;
+            if(num == arr.length) num = 0;
+        }, 1000);
+    </script> -->
+
+    <!-- <script>
+        var arr = document.querySelectorAll(".bgimg");
+        var i = 0;
+        setInterval(function() {
+            arr[i].classList.remove("active");
+            i++;
+            if(i == arr.length) i = 0;
+            arr[i].classList.add("active");
+        }, 1000);
+    </script> -->
+</body>
+</html>

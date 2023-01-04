@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var date = new Date(); //현재 날짜, 시간
+        var date = new Date(2023, 0, 4); //년월일 지정하기
+        var date = new Date(2023, 0, 4, 14, 22, 22); //년월일 시분초
+        
+        //날짜의 포멧 형식 변환 함수
+        console.log(date);
+        console.log(date.toUTCString());
+        console.log(date.toLocaleTimeString());
+        console.log(date.toISOString());
+
+        //년 월 일 값 얻기 - getter
+        var milis = Date.now(); //객체를 생성하지 않고 static메소드인 now()로 현재 시간을 받아옴
+        var milis = date.getTime(); //Date 객체를 생성해서 getter메소드로 현재 시간을 받아옴
+        console.log(milis); //1970.1.1 ~ 현재 까지의 시간을 밀리초 단위로 리턴
+
+        var year = date.getFullYear(); //년
+        var month = date.getMonth() + 1;//월 - 0부터 시작
+        var day = date.getDate(); //일
+        var d = date.getDay(); //요일
+
+        var hour = date.getHours(); //시
+        var minute = date.getMinutes(); //분
+        var seconds = date.getSeconds(); //초
+        
+        console.log(year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minute + "분 " + seconds + "초");
+    </script>
+</body>
+</html>
