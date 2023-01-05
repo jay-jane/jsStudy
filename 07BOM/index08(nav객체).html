@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(navigator);
+        // 콜백*** - 호출하면 호출한 곳으로 다시 결과를 돌려줌
+        navigator.geolocation.getCurrentPosition(success, fail);
+
+        function success(result) { //위치 정보 얻기에 성공 - success 실행
+            console.log(result.coords);
+            console.log(result.coords.latitude); //위도
+            console.log(result.coords.longitude); //경도
+        }
+        function fail(result) { //실패 - fail 실행
+            console.log(result);
+        }
+        </script>
+</body>
+</html>

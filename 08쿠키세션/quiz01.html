@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="popup1.js"></script>
+</head>
+<body>
+    <h3>메인</h3>
+
+    <script>
+        window.onload = function() {
+            if(document.cookie.indexOf("mainPopup") == -1) {
+                window.open("popup.html", "팝업", "width=500px, height=300px, left=500px, top=100px");
+            }
+
+            if(getCookie() != true) {
+                window.open("popup1.html", "팝업2", "width=500px, height=300px, left=700px, top=200px");
+            }
+        }
+    </script>
+</body>
+</html>

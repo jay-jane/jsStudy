@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>콜백 함수</h3>
+
+    <script>
+        geolocation(function(result) {
+            console.log(result); //결과 - 3초 뒤에 실행
+        }, function(result) {
+            console.log(result);
+        });
+
+        function geolocation(success, fail) {
+            setTimeout(function() {
+                //성공하면
+                success("결과값"); //대신 실행
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

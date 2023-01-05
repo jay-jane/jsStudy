@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #countdown {
+            color: yellowgreen;
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>네이버타이머 도전하기</h3>
+
+    1. select태그는 시간:99 or 분:60 or 초:60으로 화면이 생성될 때 엘리먼트 생성기법으로 처리합니다.<br>
+    2. 시간설정 버튼을 클릭하면 시간이 세팅됩니다.<br>
+    3. 타이머시작버튼은 토글형태로 타이머가 동작중이라면 일시정지 버튼으로 활성화 됩니다<br>
+    4. 사용자가 버튼을 잘못클릭하는 경우를 고려하여, 어떠한 경우라도 중복으로 타이밍이 발생되면 안됩니다.
+    <hr>
+
+    <h3>시간 설정</h3>
+    <select id="hour"></select>
+    <select id="minute"></select>
+    <select id="second"></select>
+
+    <button class="start">시작</button>
+    <button class="reset">리셋</button>
+    <div id="countdown"></div>
+
+    <script>
+        var flag = false;
+        var hour = document.getElementById("hour");
+        var minute = document.getElementById("minute");
+        var second = document.getElementById("second");
+        window.onload = function () {
+            for (var i = 0; i <= 99; i++) { //시간
+                var hours = document.createElement("option");
+                hours.innerHTML = i;
+                hour.appendChild(hours);
+            }
+
+            for (var i = 0; i <= 60; i++) { //분
+                var minutes = document.createElement("option");
+                minutes.innerHTML = i;
+                minute.appendChild(minutes);
+            }
+
+            for (var i = 0; i <= 60; i++) { //초
+                var seconds = document.createElement("option");
+                seconds.innerHTML = i;
+                second.appendChild(seconds);
+            }
+        }
+
+        var start = document.querySelector(".start");
+        var countdown = document.querySelector("#countdown");
+        start.onclick = function () {
+            flag = true;
+            if (countdown.hasChildNodes()) {
+                while (countdown.hasChildNodes()) {
+                    countdown.removeChild(countdown.firstElementChild);
+                }
+            }
+            document.body.appendChild(countdown);
+            if (hour.value == 0 && minute.value == 0 && second.value == 0) {
+                alert('시간을 설정해주세요');
+                return;
+            }
+            reset.disabled = 'disabled'; //타이머 작동 중에는 리셋 버튼 비활성
+
+
+
+
+            var cH = document.createElement("span");
+            var cM = document.createElement("span");
+            var cS = document.createElement("span");
+            cH.innerHTML = hour.value + " : ";
+            cM.innerHTML = minute.value + " : ";
+            cS.innerHTML = second.value;
+            countdown.appendChild(cH);
+            countdown.appendChild(cM);
+            countdown.appendChild(cS);
+
+            setInterval(function () { //시분초 숫자 카운트다운
+                if (hour.value == 0 && minute.value == 0 && second.value == 0) {
+                    return;
+                }
+                if (minute.value == 0 && second.value == 0) {
+                    minute.value = 60;
+                    hour.value -= 1;
+                    cH.innerHTML = hour.value + " : ";
+                    countdown.removeChild(cH);
+                    countdown.appendChild(cH);
+                }
+                if (second.value == 0) {
+                    second.value = 60;
+                    minute.value -= 1;
+                    cM.innerHTML = minute.value + " : ";
+                    countdown.removeChild(cM);
+                    countdown.appendChild(cM);
+                }
+
+                console.log(countdown);
+                second.value -= 1;
+                cS.innerHTML = second.value;
+                countdown.removeChild(cS);
+                countdown.appendChild(cS);
+            }, 1000);
+        }
+
+        var reset = document.querySelector(".reset");
+        reset.onclick = function () {
+            hour.value = 0;
+            minute.value = 0;
+            second.value = 0;
+        }
+    </script>
+</body>
+
+</html>
