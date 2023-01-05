@@ -72,6 +72,7 @@
                 alert('시간을 설정해주세요');
                 return;
             }
+
             reset.disabled = 'disabled'; //타이머 작동 중에는 리셋 버튼 비활성
 
 
@@ -86,8 +87,13 @@
             countdown.appendChild(cH);
             countdown.appendChild(cM);
             countdown.appendChild(cS);
-
-            setInterval(function () { //시분초 숫자 카운트다운
+            
+            // if (hour.value == 0 && minute.value == 0 && second.value == 0) {
+            //     alert("땡 !");
+            //     clearInterval(interv);
+            //     return;
+            // } //수정할 부분
+            var interv = setInterval(function () { //시분초 숫자 카운트다운
                 if (hour.value == 0 && minute.value == 0 && second.value == 0) {
                     return;
                 }
@@ -105,7 +111,7 @@
                     countdown.removeChild(cM);
                     countdown.appendChild(cM);
                 }
-
+                
                 console.log(countdown);
                 second.value -= 1;
                 cS.innerHTML = second.value;
